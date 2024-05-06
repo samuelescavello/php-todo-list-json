@@ -6,13 +6,15 @@ createApp({
         return{
             todo:[],
             itemText:'',
-            apiUrl: 'server.php'
+            apiUrl: 'server.php',
+            lastId: 5,
         }
     },
     methods:{
-        getata(){
+        getData(){
             axios.get(this.apiUrl).then((res)=>{
-                this.todo = res.data;
+                 this.todo = res.data;
+                console.log(res.data)
             })
         },
         toggleDone(id){
@@ -50,5 +52,6 @@ createApp({
     },
     mounted(){
         // console.log(this.todo)
+        this.getData();
     }
 }).mount('#app')

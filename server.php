@@ -1,4 +1,6 @@
 <?php
+//legge un file
+$todoJson = file_get_contents("js/data.json");
 
-$todoJson = json_decode(file_get_contents("js/data.json"), true);
-var_dump($todoJson);
+header("Content-Type: application/json");
+echo $todoJson;
