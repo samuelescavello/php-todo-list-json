@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vue to do list</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="js/script.js" type="module"></script>
+</head>
+
+<body>
+
+    <div id="app">
+
+        <main class="container my-4">
+            <h1 class="text-uppercase ">lista di cose da fare prima di morire </h1>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between " v-for="(item,index) in todo" :key="item.id">
+                    <span :class="{'text-decoration-line-through' : item.done}" @click="toggleDone(item.id)">
+                        {{item.text}}
+                    </span>
+                    <i class="fa-solid fa-trash" @click="removeItem(item.id)"></i>
+                </li>
+            </ul>
+            <div>
+                <h2>inserisci todo</h2>
+                <div class="mb-3">
+                    <label for="todotext" class="form-label">inserisci qui sotto <i class="fa-solid fa-arrow-down"></i></label>
+                    <input type="text" class="form-control" id="todotext" v-model="itemText" @keyup.enter="addTodo">
+                    <button class="btn btn-primary mt-3 " @click="addTodo">add</button>
+                  </div>
+            </div>
+        </main>
+
+    </div>
+
+
+</body>
