@@ -1,14 +1,20 @@
-import {todo} from './data.js'
+
 
 const {createApp} = Vue ;
 createApp({
     data(){
         return{
-            todo: todo,
-            itemText:''
+            todo:[],
+            itemText:'',
+            apiUrl: 'server.php'
         }
     },
     methods:{
+        getata(){
+            axios.get(this.apiUrl).then((res)=>{
+                this.todo = res.data;
+            })
+        },
         toggleDone(id){
             const item = this.todo.find((el)=>{
                 return el.id === id;
